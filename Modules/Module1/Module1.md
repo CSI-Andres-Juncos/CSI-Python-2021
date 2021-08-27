@@ -115,6 +115,14 @@ https://github.com/CSI-Carlos-Cobian/CSI-Python-2021
 
 <br>
 
+# Set up your development environment
+
+## Install [Visual Studio Code](https://code.visualstudio.com/download) or [XCode](https://developer.apple.com/xcode/) `(1pts)`
+
+### Visual Studio works for both MAC and PC. XCode runs only on MAC. Use default settings.
+
+<br>
+
 
 ## Clone the repository into your machine `(1pts)`
 ### Create a folder on your machine **(Windows)**. 
@@ -140,7 +148,7 @@ In here, you will clone the repositories for any courses that use GitHub. Curren
 
 <br>
 
-### Clone using GitHub Desktop. 
+### Clone using GitHub Desktop **(Mac)**. 
 After signing in to GitHub, click on Clone and your fork should show up. **GitHub Desktop** automatically creates a folder on your Documents called <u>GitHub</u>. This is the equivalent of the *'Courses'* folder mentioned above. Within this folder you will find a folder named <u>CSI-Python-2021</u> containing your cloned course.
 
 <br>
@@ -158,7 +166,7 @@ You may update your fork on GitHub.com. When your fork is out of date, a banner 
 <br>
 
 To download fork updates to your **local** repository(PC).
-1. Go to your `Source Control` tab in Visual Studio(or GitHub Desktop).
+1. Go to your `Source Control` tab in Visual Studio(3rd).
 2. Click on the 3 dots (your git menu).
 3. Pull.
 
@@ -197,11 +205,11 @@ What is the difference between a git commit and a git push?
 
 What is the difference between a pull, and an upstream pull?
 
- - Answer: Upstream pull is where you upload the repository from the teacher to my own, while Pull is where you 
+ - Answer: Pull upstream is where you upload or update the repository from the teacher's copy to my fork, while Pull is where you upload or update the repository from my fork to my own computer
 
 What part of these instructions was unclear or incomplete?
 
- - Answer:
+ - Answer: No
 
 Type down any class notes below this sentence:
 
