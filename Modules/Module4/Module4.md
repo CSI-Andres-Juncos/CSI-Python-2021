@@ -135,7 +135,9 @@ Evaluate the following code. Is the code written correctly? What would be the co
         print('This message has a syntax error!")
         print(Churrigueresco)
 
- - Answer:
+ - Answer:No, you correct it by doing:
+        print("This message has a syntax error")
+        print("Churrigueresco")
 
 Evaluate the following code. Is the code written correctly? What would be the correct code?
         someNumber=360
