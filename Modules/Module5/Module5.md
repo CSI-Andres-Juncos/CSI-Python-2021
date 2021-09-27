@@ -71,9 +71,11 @@ print(f"Computer selected: {computerChoice}")
 Give a python example for each logic operator in the module image.
 
  - Answers:
-   - OR:
-   - AND: 
-   - NOT: 
+   - OR: 0 or 1 = 1
+
+   - AND: 0 and 1 = 0
+
+   - NOT: 0 not 1
 
 
 Type down any class notes below this sentence:
