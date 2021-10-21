@@ -1,5 +1,8 @@
 import math
+from pathlib import Path
+import os
 from ExperimentalData import ExperimentalData
+import json
 
 # Gun="OP-SKS"
 # Caliber="7.62x39mm"
@@ -26,5 +29,18 @@ def ProjectileFunction(experimentalData:ExperimentalData):
 #     "gravity_Ms" : 9.81
 # }
 
-experimentalData = ExperimentalData("OP-SKS","7.62x39mm","MAI AP",875,"One World Trade Center",541.3,9.81)
-ProjectileFunction(experimentalData)
+myDataset = [
+    ExperimentalData("OP-SKS","7.62x39mm","MAI AP",875,"One World Trade Center",541.3,9.81),
+    ExperimentalData("OP-SKS","7.62x39mm","BP gzh",875,"One World Trade Center",541.3,9.81),
+    ExperimentalData("OP-SKS","7.62x39mm","HP",875,"One World Trade Center",541.3,9.81),
+    ExperimentalData("OP-SKS","7.62x39mm","PS gzh",875,"One World Trade Center",541.3,9.81),
+    ExperimentalData("OP-SKS","7.62x39mm","US gzh",875,"One World Trade Center",541.3,9.81),
+]
+ProjectileFunction(myDataset[1])
+
+
+myOutputPath = Path(__file__).parents[0]
+myOutputFilePath = os.path.join(myOutputPath , "ExperimentalData.json")
+
+with open(myOutputFilePath, 'w') as outfile:
+    json.dump(myDataset.__dict__ , outfile)

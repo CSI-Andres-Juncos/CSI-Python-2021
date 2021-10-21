@@ -1,0 +1,9 @@
+{
+    "Gun": "OP-SKS",
+    "Caliber": "7.62x39mm",
+    "Ammunition": "MAI AP",
+    "Velocity_Ms": 875,
+    "Building": "One World Trade Center",
+    "BuildingHeight_m": 541.3,
+    "gravity_Ms": 9.81
+}
