@@ -1,3 +1,4 @@
+from http.client import responses
 import json, ssl
 import os
 from pathlib import Path
@@ -31,3 +32,8 @@ for x in range(100):
         coffees.append(coffee) 
         # Print id
         print(coffee.id)
+
+        filePath = os.path.join(myOutputPath, f"{coffee.uid}.json")
+
+        with open(myOutputFilePath, 'w') as outfile:
+            json.dump(coffee.__dict__, outfile)
