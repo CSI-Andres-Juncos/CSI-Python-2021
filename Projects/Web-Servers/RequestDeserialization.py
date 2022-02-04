@@ -35,5 +35,5 @@ for x in range(100):
 
         filePath = os.path.join(myOutputPath, f"{coffee.uid}.json")
 
-        with open(myOutputFilePath, 'w') as outfile:
+        with open(filePath, 'w') as outfile:
             json.dump(coffee.__dict__, outfile)
