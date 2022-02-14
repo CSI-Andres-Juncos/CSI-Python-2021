@@ -5,6 +5,7 @@ from operator import contains
 import numbers
 import os
 from pathlib import Path
+from string import punctuation
 from tracemalloc import start
 import urllib.request
 from Coffee import Coffee
@@ -105,19 +106,28 @@ print(coffee.blend_name)
 print(len(coffee.blend_name)*" _")
 
 
+
 def input_function():
     while(True):
-        letter = input("Imput letter")
+        letter = input("Input letter")
+        string_set = set(letter)
+        punctuation_set = set(letter.punctuation)
 
         if(len(letter) != 1):
+            print("Only type 1 letter")
+            continue
+        if (letter.isnumeric()):
+            print("There are no numbers")
+            continue
+        if (letter.isspace):
             print("Not a letter")
             continue
-        if (letter.isdigit()):
-            print("error")
+        if (string_set.intersection(punctuation_set)):
+            print("Not a letter")
             continue
         return letter
 
-
+print(input_function())
 
 
     
