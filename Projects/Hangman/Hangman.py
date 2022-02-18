@@ -1,6 +1,7 @@
 from contextlib import nullcontext
 from http.client import responses
 import json, ssl
+from lib2to3.pytree import LeafPattern
 from operator import contains
 import numbers
 import os
@@ -19,6 +20,7 @@ requestData = json.loads(urllib.request.urlopen(req).read())
 
 coffee:Coffee = Coffee(**requestData)
 
+my_list = []
 
 
 steps = ["""
@@ -110,28 +112,44 @@ print(len(coffee.blend_name)*" _")
 def input_function():
     while(True):
         letter = input("Input letter")
-        string_set = set(letter)
-        punctuation_set = set(letter.punctuation)
-
+        specialcharacter = "!@#$%^&*()-+?_=,<>/"
+        
         if(len(letter) != 1):
             print("Only type 1 letter")
             continue
         if (letter.isnumeric()):
             print("There are no numbers")
             continue
-        if (letter.isspace):
+        if (letter.isspace()):
             print("Not a letter")
             continue
-        if (string_set.intersection(punctuation_set)):
+        if (letter in specialcharacter):
             print("Not a letter")
             continue
+
+        # append to list of used letters
+        my_list.append(letter)
         return letter
 
 print(input_function())
 
+def printword():
+    Temp:str = ""
 
-    
+    for letter in coffee.blend_name:
+        if letter in coffee.blend_name:
+            Temp+= letter 
+        else:
+            Temp+= "_"
+    print (Temp)
 
+#while(True):
+    #print (steps[0])
+    #get input
+
+def stepscount():
+    while(True):
+        if steps
     
 
     
