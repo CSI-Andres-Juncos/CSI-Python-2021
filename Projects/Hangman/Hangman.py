@@ -1,5 +1,6 @@
 from contextlib import nullcontext
 from http.client import responses
+from itertools import count
 import json, ssl
 from lib2to3.pytree import LeafPattern
 from operator import contains
@@ -20,8 +21,9 @@ requestData = json.loads(urllib.request.urlopen(req).read())
 
 coffee:Coffee = Coffee(**requestData)
 
-my_list = []
+attemptedLetters = []
 
+errors = 0
 
 steps = ["""
     |---------|
@@ -105,13 +107,13 @@ print(steps[0])
 
 print(coffee.blend_name)
 
-print(len(coffee.blend_name)*" _")
+print(len(coffee.blend_name)*"_")
 
 
 
 def input_function():
     while(True):
-        letter = input("Input letter")
+        letter = input("Input letter:")
         specialcharacter = "!@#$%^&*()-+?_=,<>/"
         
         if(len(letter) != 1):
@@ -120,36 +122,47 @@ def input_function():
         if (letter.isnumeric()):
             print("There are no numbers")
             continue
-        if (letter.isspace()):
-            print("Not a letter")
-            continue
+        #if (letter.isspace()):
+            #print("Not a letter")
+            #continue
         if (letter in specialcharacter):
             print("Not a letter")
             continue
 
         # append to list of used letters
-        my_list.append(letter)
+        attemptedLetters.append(letter)
         return letter
 
-print(input_function())
-
 def printword():
-    Temp:str = ""
 
+    Temp:str = ""
     for letter in coffee.blend_name:
-        if letter in coffee.blend_name:
+        if letter in attemptedLetters:
             Temp+= letter 
         else:
             Temp+= "_"
-    print (Temp)
+    print(Temp)
+    return errors
 
-#while(True):
-    #print (steps[0])
-    #get input
 
-def stepscount():
-    while(True):
-        if steps
+def printsteps():
+    for letter in attemptedLetters:
+        if letter not in coffee.blend_name:
+            errors + 1
+            print(steps[errors])
+           
+
+while(True):
+    input_function()
+    printword()
+    printsteps()
+
+
+
+ 
+
+
+
     
 
     
