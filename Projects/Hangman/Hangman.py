@@ -1,14 +1,5 @@
-from contextlib import nullcontext
-from http.client import responses
-from itertools import count
 import json, ssl
-from lib2to3.pytree import LeafPattern
-from operator import contains
-import numbers
-import os
-from pathlib import Path
-from string import punctuation
-from tracemalloc import start
+from pdb import Restart
 import urllib.request
 from Coffee import Coffee
 
@@ -23,6 +14,8 @@ requestData = json.loads(urllib.request.urlopen(req).read())
 coffee:Coffee = Coffee(**requestData)
 
 attemptedLetters = []
+
+errors = 0
 
 
 #Here im creating each step for the game
@@ -109,13 +102,14 @@ print(steps[0])
 
 #This prints the random word selected but the letters are replaced with _.
 print(len(coffee.blend_name)*"_")
+print(coffee.blend_name)
 
 
 #This function is filtering every other input that isn't a letter, making surethere are no numbers, symbols or that only 1 letter is selected, and will return an error until 1 letter is put in.
 def input_function():
     while(True):
         letter = input("Input letter:")
-        specialcharacter = "!@#$%^&*()-+?_=,<>/"
+        specialcharacter = "!@#$%^&*()+?_=,<>/"
         
         if(len(letter) != 1):
             print("Only type 1 letter")
@@ -146,22 +140,29 @@ def printword():
 #This is the logic for every wrong letter. First it creates the variable "errors" to store the count for every wrong worc. Then, it verifies if the letter is wrong, and if it is, it will raise the errors count by 1 and print the next step.
 #This will repeat until all 7 steps are passed, which will then say "GAME OVER" and reveal what the word was.
 def printsteps():
-    errors = 0
     for letter in attemptedLetters:
         if letter not in coffee.blend_name:
             errors=errors+1
         if errors == 7:
-            print("GAME OVER, word was:")
+            print("GAME OVER L + ratio, the word was:")
             print(coffee.blend_name)
+            
     print(steps[errors])
        
+while(True):
+# get new word
+# reset used letters
 
            
-#This is what keeps the game going and will repeat all loops until the game is over.
-while(True):
-    input_function()
-    printword()
-    printsteps()
+    #This is what keeps the game going and will repeat all loops until the game is over.
+    while(True):
+        input_function()
+        printword()
+        printsteps()
+        if errors == 7:
+            break
+
+    
 
 
 
