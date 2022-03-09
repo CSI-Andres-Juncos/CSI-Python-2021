@@ -1,5 +1,4 @@
 import json, ssl
-from pdb import Restart
 import urllib.request
 from Coffee import Coffee
 
@@ -13,9 +12,8 @@ def getword():
     requestData = json.loads(urllib.request.urlopen(req).read())
 
     coffee:Coffee = Coffee(**requestData)
-    return coffee.blend_name
+    return coffee.blend_name.upper()
 
-# errors=0
 
 #Here im creating each step for the game
 steps = ["""
@@ -111,7 +109,7 @@ steps = ["""
 #This function is filtering every other input that isn't a letter, making surethere are no numbers, symbols or that only 1 letter is selected, and will return an error until 1 letter is put in.
 def input_function():
     while(True):
-        letter = input("Input letter:")
+        letter = input("Input letter:").upper()
         specialcharacter = "!@#$%^&*()+?_=,<>/"
         
         if(len(letter) != 1):
@@ -123,6 +121,10 @@ def input_function():
         if (letter in specialcharacter):
             print("Not a letter")
             continue
+        if (letter in attemptedLetters):
+            print("Letter already used")
+            continue
+        
 
         # append to list of used letters
         attemptedLetters.append(letter)
@@ -142,7 +144,8 @@ def printword(myCoffee):
 
 #This is the logic for every wrong letter. First it creates the variable "errors" to store the count for every wrong worc. Then, it verifies if the letter is wrong, and if it is, it will raise the errors count by 1 and print the next step.
 #This will repeat until all 7 steps are passed, which will then say "GAME OVER" and reveal what the word was.
-def printsteps(myCoffee,errors):
+def getErrors(myCoffee):
+    errors=0
     for letter in attemptedLetters:
         if letter not in myCoffee:
             errors=errors+1
@@ -150,20 +153,20 @@ def printsteps(myCoffee,errors):
                 print("You lost 🗿🗿🗿🗿, the word was:")
                 print(myCoffee)
             
-    print(steps[errors])
+    return errors
        
 
         
 
 #This is what keeps the game going and will repeat all loops until the game is over.
 while(True):
-    #Temp=[]
-    attemptedLetters=[]
-    errors=
+    attemptedLetters=[""]
     myword=getword()
     while(True):
         printword(myword)
-        printsteps(myword,errors)
+        errors = getErrors(myword)
+        print(steps[errors])
+        # printsteps(myword,errors)
         input_function()
         
         if errors == 7:
