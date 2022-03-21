@@ -10,7 +10,11 @@ game_over=False
 #This loop is to stop the game from closing immediately after you open it
 while not game_over:
     for event in pygame.event.get():
-        print(event)   #prints out all the actions that take place on the screen
+        print(event)
+        #This is so you can close the game when you hit the x button
+        if event.type==pygame.QUIT:
+            game_over=True
+
 #This command closes the game
 pygame.quit()
 quit()
