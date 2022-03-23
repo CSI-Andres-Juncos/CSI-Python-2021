@@ -23,7 +23,10 @@ movement_speed = 15
 #This determines the font for text
 font_style = pygame.font.SysFont("bahnschrift", 25)
 score_font = pygame.font.SysFont("comicsansms", 35)
- 
+ #This displays your current score
+def Your_score(score):
+    value = score_font.render("Your Score: " + str(score), True, yellow)
+    dis.blit(value, [0, 0])
 #This creates the snake
 def our_snake(snake, snake_list):
     for x in snake_list:
@@ -109,7 +112,7 @@ def gameLoop():   #This is the loop that makes the game continue until you die
                 game_close = True
  
         our_snake(snake, snake_List)
- 
+        Your_score(Length_of_snake - 1) 
  
         pygame.display.update()
         #This increaes the snakes length upon eating food
